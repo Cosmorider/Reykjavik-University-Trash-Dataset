@@ -1,6 +1,7 @@
 # Reykjavik-University-Trash-Dataset
 Code for collecting pictures of trash with an insanely detailed encoding scheme for research purposes
 
+<<<<<<< HEAD
 | Parameter          | Description                                              | Parameter values                          | Purpose                                  |
 |--------------------|----------------------------------------------------------|-------------------------------------------|------------------------------------------|
 | dc                 | Date of capture                                          | DDMMYY                                    | Identifying capture date                 |
@@ -26,3 +27,6 @@ Code for collecting pictures of trash with an insanely detailed encoding scheme 
 | w                 | Waste stream                                              | 0: Plastic bin <br> 1: Paper bin <br> 2: General bin <br> 3: Cans bin <br> 4: Unknown        | Identifying product                    |
 | ui                 | Under item count                                         | N/A                                       | Counting under items                   |
 | r                  | Random                                                   | 0-100000                                       | Prevents image files from overwriting each other if they are exactly the same                   |
+=======
+The dataset is currently being collected
+>>>>>>> 050147832432cdf72e0e591438699a01e91f2832
