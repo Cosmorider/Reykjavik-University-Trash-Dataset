@@ -33,5 +33,7 @@ There are a couple of important things to keep in mind:
 
 ![Club sandwich](sandwich.png)
 
+<img src="sandwich.png">
+
 When collecting data using this encoding, it is assumed that you manually type in the information about the item before inserting it into an "identification chamber", not afterwards.
 
