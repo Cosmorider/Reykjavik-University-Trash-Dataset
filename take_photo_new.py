@@ -267,7 +267,7 @@ def main():
                         
                         # Get under items info
                         under_item_count = int(input(f"How many under items are there for primary item {pi + 1}?: "))
-                        primary_item_info = f"c{composite}cl{item_type}p{partial_object}d{dirtiness}d{deformation}u{unopened}co{compostable}m{metal_type}g{glass_color}pc{pet_color}pl{pet_label}pt{plastic_type}b{brand}pr{product}ui{under_item_count}"
+                        primary_item_info = f"c{composite}cl{item_type}p{partial_object}d{dirtiness}de{deformation}u{unopened}co{compostable}m{metal_type}g{glass_color}pc{pet_color}pl{pet_label}pt{plastic_type}b{brand}pr{product}ui{under_item_count}"
 
                         under_items_encoded = []
                         for ui in range(under_item_count):
@@ -368,7 +368,7 @@ def main():
                                 glass_color = input("Enter glass color (0: Not glass, 1: Transparent, 2: Red, 3: Green): ")
                             else:
                                 glass_color = '0'
-                            under_item_info = f"cl{item_type}p{partial_object}d{dirtiness}d{deformation}co{compostable}m{metal_type}g{glass_color}pc{pet_color}pl{pet_label}pt{plastic_type}"
+                            under_item_info = f"cl{item_type}p{partial_object}d{dirtiness}de{deformation}co{compostable}m{metal_type}g{glass_color}pc{pet_color}pl{pet_label}pt{plastic_type}"
                             under_items_encoded.append(under_item_info)
                         
                         # Combine primary item info with under items info
