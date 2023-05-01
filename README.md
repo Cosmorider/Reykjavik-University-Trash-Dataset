@@ -31,5 +31,7 @@ There are a couple of important things to keep in mind:
 1. If there are multiple primary items, they all have individual encodings and can have either none or multiple under items. When parsing the encoding you can separate each primary item by knowing how many there are, this is also true for the under items.
 2. The reason for having primary and under items, is to know when there are different items which should go into different waste streams, if this is the case, then they should always go into the general category. Therefore, when there are multiple primary items, they go into the "multiple_items" folder which was made to make a neural network model which can identify if there are object which share the same waste stream or not, and to identify if there are multiple objects.
 
+![Club sandwich](sandwich.jpg)
+
 When collecting data using this encoding, it is assumed that you manually type in the information about the item before inserting it into an "identification chamber", not afterwards.
 
