@@ -56,8 +56,10 @@ def create_folder(folder_name):
 
 def main():
     user_id = 0
-    user_name = 'Daníel Logi Matthíasson'
-    date_of_capture = datetime.datetime.now().strftime("%d%m%y")
+    user_name = 'Daníel Logi Matthíasson'.upper()
+    country = 'Iceland'.upper()
+    municipality = 'Reykjavíkurborg'.upper()
+    mrf_facility = "Terra".upper()
 
     class_to_folder = {
     '00': 'Aluminum_cans',
@@ -156,6 +158,19 @@ def main():
                         # Input brand and product
                         brand = input("Enter brand or type 'no': ").upper().replace(" ", "_")
                         product = input("Enter product or type 'no': ").upper().replace(" ", "_")
+
+                        shape = input("""Enter shape of item: 
+                        0: Not applicable or unknown/indescribable
+                        1: Cylindrical
+                        2: Rectangular
+                        3: Spherical
+                        4: Cuboidal
+                        5: Conical
+                        6: Prismatic
+                        7: Toroidal
+                        8: Irregular
+                        9: Flat
+                        10: Tubular of the trash items """).upper().replace(" ", "_")
 
                         if brand == "NO":
                             brand = "NO_BRAND"
@@ -267,7 +282,7 @@ def main():
                         
                         # Get under items info
                         under_item_count = int(input(f"How many under items are there for primary item {pi + 1}?: "))
-                        primary_item_info = f"c{composite}cl{item_type}p{partial_object}d{dirtiness}de{deformation}u{unopened}co{compostable}m{metal_type}g{glass_color}pc{pet_color}pl{pet_label}pt{plastic_type}b{brand}pr{product}ui{under_item_count}"
+                        primary_item_info = f"c{composite}cl{item_type}sh{shape}p{partial_object}d{dirtiness}de{deformation}u{unopened}co{compostable}m{metal_type}g{glass_color}pc{pet_color}pl{pet_label}pt{plastic_type}b{brand}pr{product}ui{under_item_count}"
 
                         under_items_encoded = []
                         for ui in range(under_item_count):
@@ -327,6 +342,39 @@ def main():
                                 Item type: '''))
                             item_type = f"{item:02d}"
 
+                            shape = input("""Enter shape of item: 
+                            0: Not applicable or unknown/indescribable
+                            1: Cylindrical
+                            2: Rectangular
+                            3: Spherical
+                            4: Cuboidal
+                            5: Conical
+                            6: Prismatic
+                            7: Toroidal
+                            8: Irregular
+                            9: Flat
+                            10: Tubular of the trash items: """).upper().replace(" ", "_")
+
+                            recyclability = input("""Is the item recyclable:
+                                                  0: Not recyclable
+                                                  1: Recyclable
+                                                  2: Unknown/uncertain""")
+                            
+                            recycling_code = input("""Recycling code:
+                                                    0: No recycling code
+                                                    Other number: Put the recycling code
+                                                    MULTIPLE: Multiple recycling codes: """)
+                            
+                            dirtiness = input("Enter dirtiness (0: No dirtiness, 1: Partial dirtiness, 2: Some dirtiness, 3: A lot of dirtiness): ")
+                            dirtiness_source = input("""What is the source of dirtiness:
+                            0: None
+                            1: Food
+                            2: Liquids
+                            3: Chemicals
+                            4: Other""")
+                            minimizing_dirtiness = input("""Are there any guidlines for minimizing the dirtiness for this item (type "no" if there aren't""").upper()
+                            deformation = input("Enter deformation (0: Not deformed, 1: Partially deformed, 2: Somewhat deformed, 3: Very deformed): ")
+
                             # Input composite
                             if item == 10 or item == 20 or item == 22 or item == 29 or item == 39 or item == 12:
                                 composite = '1'
@@ -368,7 +416,7 @@ def main():
                                 glass_color = input("Enter glass color (0: Not glass, 1: Transparent, 2: Red, 3: Green): ")
                             else:
                                 glass_color = '0'
-                            under_item_info = f"cl{item_type}p{partial_object}d{dirtiness}de{deformation}co{compostable}m{metal_type}g{glass_color}pc{pet_color}pl{pet_label}pt{plastic_type}"
+                            under_item_info = f"cl{item_type}sh{shape}p{partial_object}d{dirtiness}de{deformation}co{compostable}m{metal_type}g{glass_color}pc{pet_color}pl{pet_label}pt{plastic_type}"
                             under_items_encoded.append(under_item_info)
                         
                         # Combine primary item info with under items info
@@ -415,7 +463,9 @@ def main():
 
             halt = input("Next photo? (type anything to continue)")
 
-            encoded = f"dc{date_of_capture}id{user_id}li{lighting}o{bin_origin}s{sample_nr}pi{primary_item_count}" + "".join(primary_items_encoded) + f"r{random_number}"+f"s{sus}"
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+            encoded = f"dc{date_of_capture}t{timestamp}n{user_name}li{lighting}o{bin_origin}l{location}ct{country}mu{municipality}mrf{mrf_facility}s{sample_nr}pi{primary_item_count}" + "".join(primary_items_encoded) + f"r{random_number}"+f"su{sus}"
 
             # Capture photo and save it
             print(f"Taking photo {sample_nr}...")
